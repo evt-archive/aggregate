@@ -19,7 +19,7 @@ module Aggregate
       end
 
       handle Commands::Deposit do |deposit|
-        deposited = Deposited.follow(deposit)
+        deposited = Events::Deposited.follow(deposit)
 
         stream_name = self.stream_name(deposit.account_id)
 
@@ -38,9 +38,9 @@ module Aggregate
         amount = withdraw.amount
 
         if self.sufficient_funds?(amount)
-          event = Withdrawn.follow(withdraw)
+          event = Events::Withdrawn.follow(withdraw)
         else
-          event = WithdrawalRejected.follow(withdraw)
+          event = Events::WithdrawalRejected.follow(withdraw)
         end
 
         stream_name = self.stream_name(withdraw.account_id)
