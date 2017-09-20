@@ -2,7 +2,7 @@
 
 ## Usage
 
-1. Define an entity class
+1. Define an entity (i.e. attributes)
 2. Handle command messages by writing events
 3. Apply events to entity by mutating its state
 4. ???
