@@ -8,6 +8,8 @@ module Aggregate
       extend Build
       extend Handle
 
+      dependency :write, Messaging::Write
+
       def initialize
       end
     end
